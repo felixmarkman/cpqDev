@@ -1,0 +1,150 @@
+Record ID,Action #,Created By ID,Created Date,Currency ISO Code,Deleted,Formula,Last Modified By ID,Last Modified Date,Order,ParentRuleIsActive,Rule Lookup Object,RuleTargetsCalculator,Source Field,Source Lookup Field,System Modstamp,Target Field,Target Object,Value,SBQQ__Rule__r.Price Rule Name,SBQQ__SourceVariable__r.Variable Name
+"a1N0J00000PD1c7UAD","162","0050J000006WjRgQAK","02/27/2017T09:05:58.000Z","USD","false","IF(SBQQ__ProrateMultiplier__c = null, 1, SBQQ__ProrateMultiplier__c)","0050J000006WjRgQAK","02/27/2017T09:05:58.000Z","","false","","true","","","02/28/2017T02:32:52.000Z","Prorate_Multiplier_Insert__c","Quote Line","","Insert Prorate Multiplier New",""
+"a1N0J00000PD1iQUAT","163","0050J000006WjRgQAK","02/27/2017T09:24:55.000Z","USD","false","CASE(SBQQ__SegmentIndex__c,
+1,  SBQQ__Quote__r.Segment_1_End_Date__c , 
+2,  SBQQ__Quote__r.Segment_2_End_Date__c,
+3, SBQQ__Quote__r.Segment_3_End_Date__c,
+null)","0050J000006WjRgQAK","02/27/2017T09:24:55.000Z","","true","","true","","","02/28/2017T02:32:52.000Z","SBQQ__EndDate__c","Quote Line","","Amendment: Populate Segment Dates",""
+"a1N0J00000PD73wUAD","166","0050J000006WjRgQAK","02/28/2017T09:32:26.000Z","USD","false","IF(Seats__c = true && SBQQ__Quantity__c != 0 , 
+IF(ISPICKVAL(SBQQ__Quote__r.Allow_Seat_Reduction__c,""Yes""),0.0, 
+IF(SBQQ__Quote__r.Master_Contract_Term__c  / 12 <1,0.0, 
+IF(SBQQ__Quote__r.Master_Contract_Term__c / 12 =1,0.0, 
+IF(SBQQ__Quote__r.Master_Contract_Term__c  / 12 =2,0.05, 
+IF(SBQQ__Quote__r.Master_Contract_Term__c  / 12 >=3,0.1, 
+0.1 
+) 
+) 
+) 
+) 
+), 
+0 
+)","0050J000006WjRgQAK","02/28/2017T09:32:26.000Z","","false","","true","","","03/01/2017T02:33:52.000Z","Commitment_Discount_Percent__c","Quote Line","","Populate Commitment Discount % Amendment Quote",""
+"a1N2000000NKtpAEAT","19","00520000002CI2kAAG","10/26/2016T18:45:55.000Z","USD","false","","00520000002CI2kAAG","10/26/2016T18:45:55.000Z","","true","","true","","","10/27/2016T16:52:45.000Z","Other_Discount__c","Quote Line","0","No Discount on Source Code",""
+"a1N0J00000PCjDAUA1","137","0050J000006WjRgQAK","02/21/2017T09:35:53.000Z","USD","false","Final_Unit_Price_Number__c / Prorate_Multiplier_Copy__c","0050J000006WjRgQAK","02/27/2017T09:50:14.000Z","3.0","true","","true","","","03/01/2017T02:33:52.000Z","SBQQ__SpecialPrice__c","Quote Line","","Insert Final Unit Price into Special Price and Net Price",""
+"a1N0J00000PCjDBUA1","138","0050J000006WjRgQAK","02/21/2017T09:35:53.000Z","USD","false","","0050J000006WjRgQAK","02/21/2017T09:35:53.000Z","3.0","true","","true","","","02/21/2017T09:35:53.000Z","SBQQ__SpecialPriceType__c","Quote Line","Custom","Insert Final Unit Price into Special Price and Net Price",""
+"a1N0J00000PCjDCUA1","139","0050J000006WjRgQAK","02/21/2017T09:35:53.000Z","USD","false","","0050J000006WjRgQAK","02/27/2017T09:04:03.000Z","","false","","true","","","02/28/2017T02:32:52.000Z","Prorate_Multiplier_Insert__c","Quote Line","1","Insert Prorate Multiplier",""
+"a1N0J00000PCjDDUA1","140","0050J000006WjRgQAK","02/21/2017T09:35:53.000Z","USD","false","","0050J000006WjRgQAK","02/27/2017T09:55:39.000Z","1.0","true","","true","Final_Unit_Price__c","","03/01/2017T02:33:52.000Z","Final_Unit_Price_Number__c","Quote Line","","Insert Final Unit Price into Special Price and Net Price",""
+"a1N0J00000PCjDEUA1","141","0050J000006WjRgQAK","02/21/2017T09:35:53.000Z","USD","false","SBQQ__EffectiveQuantity__c
+/**CASE(SBQQ__ProductCode__c, 
+'SKU100303', IF(TEXT(SBQQ__Quote__r.SBQQ__Type__c) = 'Amendment', (SBQQ__Quantity__c - SBQQ__Quote__r.Contract_Seats__c ) ,SBQQ__Quantity__c) 
+, 
+'SKU100305', IF(TEXT(SBQQ__Quote__r.SBQQ__Type__c) = 'Amendment', (SBQQ__Quantity__c - SBQQ__Quote__r.Contract_Seats__c ) ,SBQQ__Quantity__c), 
+SBQQ__Quantity__c)**/","0050J000006WjRgQAK","02/21/2017T09:35:53.000Z","","true","","true","","","03/01/2017T02:33:52.000Z","Adjusted_Quantity__c","Quote Line","","Populate Adjusted Quantity",""
+"a1N0J00000PCjDFUA1","142","0050J000006WjRgQAK","02/21/2017T09:35:53.000Z","USD","false","","0050J000006WjRgQAK","02/21/2017T09:35:53.000Z","","true","","true","","","02/21/2017T09:35:53.000Z","SBQQ__Quantity__c","Quote Line","","Amendment: Transfer Seat Counts to Subsequent Years","First Year Seats Count"
+"a1N0J00000PCjDGUA1","143","0050J000006WjRgQAK","02/21/2017T09:35:53.000Z","USD","false","","0050J000006WjRgQAK","02/21/2017T09:35:53.000Z","","true","","true","","","02/21/2017T09:35:53.000Z","Seats__c","Quote Line","TRUE","Populate Seats Checkbox",""
+"a1N0J00000PCjDHUA1","144","0050J000006WjRgQAK","02/21/2017T09:35:53.000Z","USD","false","CASE(SBQQ__SegmentIndex__c,
+1,  SBQQ__Quote__r.Today__c , 
+2,  SBQQ__Quote__r.Segment_2_Start_Date__c,
+3, SBQQ__Quote__r.Segment_3_Start_Date__c,
+null)","0050J000006WjRgQAK","02/21/2017T09:35:53.000Z","","true","","true","","","02/28/2017T02:32:52.000Z","SBQQ__StartDate__c","Quote Line","","Amendment: Populate Segment Dates",""
+"a1N0J00000PCjDIUA1","145","0050J000006WjRgQAK","02/21/2017T09:35:53.000Z","USD","false","","0050J000006WjRgQAK","02/21/2017T09:35:53.000Z","","false","Emerging_Market_Price__c","true","","Emerging_Market_Discount_Factor__c","02/21/2017T09:35:53.000Z","Other_Discount__c","Quote Line","","EDUCPQ Phase1  b. Emerging Markets Disc based on ShipToContactCountry",""
+"a1N0J00000PCjDJUA1","146","0050J000006WjRgQAK","02/21/2017T09:35:53.000Z","USD","false","IF(SBQQ__Quantity__c > 21, 10, 0)","0050J000006WjRgQAK","02/21/2017T09:35:53.000Z","","false","Emerging_Market_Price__c","true","","","02/21/2017T09:35:53.000Z","Volume_Discount__c","Quote Line","","EDUCPQ Phase1  a. Volume Disc >=21 seats is a 10% disc",""
+"a1N0J00000PCjDKUA1","147","0050J000006WjRgQAK","02/21/2017T09:35:53.000Z","USD","false","Final_Unit_Price_Number__c / Prorate_Multiplier_Copy__c","0050J000006WjRgQAK","02/28/2017T14:00:33.000Z","5.0","true","","true","","","03/01/2017T02:33:52.000Z","SBQQ__NetPrice__c","Quote Line","","Insert Final Unit Price into Special Price and Net Price",""
+"a1N0J00000PCjDLUA1","148","0050J000006WjRgQAK","02/21/2017T09:35:53.000Z","USD","false","","0050J000006WjRgQAK","02/21/2017T09:35:53.000Z","","false","","true","","","02/27/2017T02:31:14.000Z","Payment_Method__c","Quote","Invoice","Set Payment Method to Invoice - IGNORE",""
+"a1N0J00000PCjDMUA1","149","0050J000006WjRgQAK","02/21/2017T09:35:53.000Z","USD","false","","0050J000006WjRgQAK","02/21/2017T09:35:53.000Z","","true","","true","","","02/21/2017T09:35:53.000Z","Volume_Discount__c","Quote Line","","Normalize Seats Volume Discounts Across Years","First Year Seats Volume Discount"
+"a1N0J00000PCjDNUA1","150","0050J000006WjRgQAK","02/21/2017T09:35:53.000Z","USD","false","TODAY()","0050J000006WjRgQAK","02/21/2017T09:35:53.000Z","","true","","true","","","02/21/2017T09:35:53.000Z","SBQQ__StartDate__c","Quote","","Default Start Dates to TODAY on Amendments",""
+"a1N0J00000PCjDOUA1","151","0050J000006WjRgQAK","02/21/2017T09:35:53.000Z","USD","false","IF(Seats__c = true && SBQQ__Quantity__c != 0 , 
+IF(ISPICKVAL(SBQQ__Quote__r.Allow_Seat_Reduction__c,""Yes""),0.0, 
+IF(SBQQ__Quote__r.SBQQ__SubscriptionTerm__c / 12 <1,0.0, 
+IF(SBQQ__Quote__r.SBQQ__SubscriptionTerm__c / 12 =1,0.0, 
+IF(SBQQ__Quote__r.SBQQ__SubscriptionTerm__c / 12 =2,0.05, 
+IF(SBQQ__Quote__r.SBQQ__SubscriptionTerm__c / 12 >=3,0.1, 
+0.1 
+) 
+) 
+) 
+) 
+), 
+0 
+)","0050J000006WjRgQAK","02/28/2017T09:29:27.000Z","","false","","true","","","03/01/2017T02:33:52.000Z","Commitment_Discount_Percent__c","Quote Line","","Populate Commitment Discount % Original Quote",""
+"a1N0J00000PCjDPUA1","152","0050J000006WjRgQAK","02/21/2017T09:35:53.000Z","USD","false","/** FLOOR(10000*(Commitment_Amount__c * Other_Discount__c)/100)/100 **/ 
+
+/** because of rounding, lines that end in .33 have to be fitted down to the total by 1 cent 
+and lines that are 66 have to be fitted up by one cent **/ 
+IF(RIGHT(TEXT(FLOOR(10000*(Commitment_Amount__c * Other_Discount__c)/100)/100), 2) = '33' , (FLOOR(10000*(Commitment_Amount__c * Other_Discount__c)/100)/100)- 0.01, 
+IF(RIGHT(TEXT(FLOOR(10000*(Commitment_Amount__c * Other_Discount__c)/100)/100), 2) = '66', (FLOOR(10000*(Commitment_Amount__c * Other_Discount__c)/100)/100)+ 0.01, 
+(FLOOR(10000*(Commitment_Amount__c * Other_Discount__c)/100)/100)))","0050J000006WjRgQAK","03/03/2017T13:26:39.000Z","","true","","true","","","03/04/2017T02:36:46.000Z","Other_Discount_Amount__c","Quote Line","","Populate Other Discount Amount",""
+"a1N0J00000PCjDQUA1","153","0050J000006WjRgQAK","02/21/2017T09:35:53.000Z","USD","false","SBQQ__Quote__r.SBQQ__SubscriptionTerm__c","0050J000006WjRgQAK","02/21/2017T09:35:53.000Z","","true","","true","","","02/21/2017T09:35:53.000Z","SBQQ__DefaultSubscriptionTerm__c","Quote Line","","Populate Default Subscription Term on Bundle",""
+"a1N0J00000PCjDRUA1","154","0050J000006WjRgQAK","02/21/2017T09:35:53.000Z","USD","false","","0050J000006WjRgQAK","02/21/2017T09:35:53.000Z","","true","","true","","","02/21/2017T09:35:53.000Z","SBQQ__ListPrice__c","Quote Line","0","Make Bundled Products List Price 0",""
+"a1N0J00000PD1pZUAT","164","0050J000006WjRgQAK","02/27/2017T09:49:05.000Z","USD","false","IF(SBQQ__ProrateMultiplier__c = null, 1, SBQQ__ProrateMultiplier__c)","0050J000006WjRgQAK","02/27/2017T09:49:05.000Z","","true","","true","","","02/28/2017T02:32:52.000Z","Prorate_Multiplier_Copy__c","Quote Line","","Prorate Multiplier Copy",""
+"a1N0J00000PCTstUAH","101","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/22/2017T02:34:28.000Z","Approval_Needed_FLM__c","Quote Line","TRUE","Conversion Discount FLM Approval",""
+"a1N0J00000PCTsuUAH","102","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_Regional_VP__c","Quote Line","TRUE","Conversion Discount RVP Approval",""
+"a1N0J00000PCTsvUAH","103","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_CFO__c","Quote Line","true","Volume Discount Approval Qty > 100 &  RVP CRO CFO Discount > 30%",""
+"a1N0J00000PCTswUAH","104","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_Regional_VP__c","Quote Line","true","Volume Discount Approval Qty > 100 &  RVP CRO CFO Discount > 30%",""
+"a1N0J00000PCTsxUAH","105","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_CRO__c","Quote Line","true","Volume Discount Approval Qty > 100 &  RVP CRO CFO Discount > 30%",""
+"a1N0J00000PCTsyUAH","106","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_FLM__c","Quote Line","TRUE","Volume Discount Approval Qty > 100 &  RVP CRO CFO Discount > 30%",""
+"a1N0J00000PCTszUAH","107","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_CFO__c","Quote Line","TRUE","Conversion Discount CFO CRO Approval",""
+"a1N0J00000PCTt0UAH","108","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_CRO__c","Quote Line","TRUE","Conversion Discount CFO CRO Approval",""
+"a1N0J00000PCTt1UAH","109","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_FLM__c","Quote Line","TRUE","Conversion Discount CFO CRO Approval",""
+"a1N0J00000PCTt2UAH","110","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_Regional_VP__c","Quote Line","true","Volume Discount Approval Qty > 100 &  RVP CRO CFO Discount > 20 & <= 30",""
+"a1N0J00000PCTt3UAH","111","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_FLM__c","Quote Line","TRUE","Volume Discount Approval Qty > 100 &  RVP CRO CFO Discount > 20 & <= 30",""
+"a1N0J00000PCTt4UAH","112","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_FLM__c","Quote Line","TRUE","Uplift Present Approval",""
+"a1N0J00000PCTt5UAH","113","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_Regional_VP__c","Quote Line","TRUE","Uplift Present Approval",""
+"a1N0J00000PCTt6UAH","114","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_CFO__c","Quote Line","true","Other Discount Approval",""
+"a1N0J00000PCTtCUAX","120","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_CFO__c","Quote Line","FALSE","Reset Line Approvals if Blank",""
+"a1N0J00000PCTtDUAX","121","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_CRO__c","Quote Line","FALSE","Reset Line Approvals if Blank",""
+"a1N0J00000PCTtEUAX","122","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_Legal__c","Quote Line","true","Legal Approval",""
+"a1N0J00000PCTtFUAX","123","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_FLM__c","Quote Line","TRUE","Volume Discount Approval Qty > 100 &  RVP CRO CFO Discount > 10 & <=20",""
+"a1N0J00000PCTtGUAX","124","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_CFO__c","Quote Line","true","Volume Discount Approval Qty >50 & <=100 RVP CRO CFO",""
+"a1N0J00000PCTtHUAX","125","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_Regional_VP__c","Quote Line","true","Volume Discount Approval Qty >50 & <=100 RVP CRO CFO",""
+"a1N0J00000PCTt7UAH","115","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_Regional_VP__c","Quote Line","true","Other Discount Approval",""
+"a1N0J00000PCTtIUAX","126","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_CRO__c","Quote Line","true","Volume Discount Approval Qty >50 & <=100 RVP CRO CFO",""
+"a1N0J00000PCTtJUAX","127","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_FLM__c","Quote Line","TRUE","Volume Discount Approval Qty >20 & <= 50",""
+"a1N0J00000PCTtKUAX","128","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_Regional_VP__c","Quote Line","true","Volume Discount Approval Qty >20 & <= 50",""
+"a1N0J00000PCTt8UAH","116","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_CRO__c","Quote Line","true","Other Discount Approval",""
+"a1N0J00000PCTt9UAH","117","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_FLM__c","Quote Line","TRUE","Other Discount Approval",""
+"a1N0J00000PCTtAUAX","118","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_Regional_VP__c","Quote Line","FALSE","Reset Line Approvals if Blank",""
+"a1N0J00000PCTtBUAX","119","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_FLM__c","Quote Line","FALSE","Reset Line Approvals if Blank",""
+"a1N0J00000PCTtLUAX","129","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_CFO__c","Quote Line","true","Volume Discount Approval Qty >20 & <= 50",""
+"a1N0J00000PCTtMUAX","130","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_CRO__c","Quote Line","true","Volume Discount Approval Qty >20 & <= 50",""
+"a1N0J00000PCTtNUAX","131","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_FLM__c","Quote Line","TRUE","Volume Discount Approval Qty >50 & <=100 FLM",""
+"a1N0J00000PCTtOUAX","132","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_Support_VP__c","Quote Line","TRUE","Support or Source Code Approval",""
+"a1N0J00000PCTtPUAX","133","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_FLM__c","Quote Line","TRUE","Volume Discount Approval Qty <= 20",""
+"a1N0J00000PCTtQUAX","134","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_Regional_VP__c","Quote Line","true","Volume Discount Approval Qty <= 20",""
+"a1N0J00000PCTtRUAX","135","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_CFO__c","Quote Line","true","Volume Discount Approval Qty <= 20",""
+"a1N0J00000PCTtSUAX","136","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","USD","false","","0050J000006WjRgQAK","02/15/2017T08:13:49.000Z","","true","","true","","","02/15/2017T08:13:49.000Z","Approval_Needed_CRO__c","Quote Line","true","Volume Discount Approval Qty <= 20",""
+"a1N0J00000PB9zBUAT","54","0050J000006WjRgQAK","12/12/2016T09:15:39.000Z","USD","false","","0050J000006WjRgQAK","12/12/2016T09:15:39.000Z","","false","","true","Final_Unit_Price__c","","02/01/2017T02:34:34.000Z","SBQQ__SpecialPrice__c","Quote Line","","Calculate Total Unit Price",""
+"a1N0J00000PD1ufUAD","165","0050J000006WjRgQAK","02/27/2017T10:05:55.000Z","USD","false","","0050J000006WjRgQAK","02/27/2017T10:05:55.000Z","","false","","true","","","02/28/2017T02:32:52.000Z","SBQQ__RegularPrice__c","Quote Line","0","Fix Customer and Regular Prices",""
+"a1N2000000NKtoqEAD","15","00520000002CI2kAAG","10/26/2016T18:35:31.000Z","USD","false","","00520000002CI2kAAG","10/26/2016T18:35:31.000Z","","true","","true","","","10/27/2016T16:52:45.000Z","Volume_Discount__c","Quote Line","0","No Discount on Support",""
+"a1N2000000NKtp5EAD","18","00520000002CI2kAAG","10/26/2016T18:45:36.000Z","USD","false","","00520000002CI2kAAG","10/26/2016T18:45:36.000Z","","true","","true","","","10/26/2016T18:45:36.000Z","Volume_Discount__c","Quote Line","0","No Discount on Source Code",""
+"a1N0J00000LrEzcUAF","23","00520000002CI2kAAG","11/22/2016T01:49:37.000Z","USD","false","","00520000002CI2kAAG","11/22/2016T01:49:37.000Z","","true","","true","","","11/23/2016T16:33:59.000Z","Uplift_Percent__c","Quote Line","0","No NULL Uplift",""
+"a1N0J00000LrEzhUAF","24","00520000002CI2kAAG","11/22/2016T02:01:16.000Z","USD","false","","00520000002CI2kAAG","11/22/2016T02:01:16.000Z","","true","","true","","","11/23/2016T16:33:59.000Z","Volume_Discount__c","Quote Line","0","No NULL Volume",""
+"a1N0J00000LrEzxUAF","25","00520000002CI2kAAG","11/22/2016T02:05:43.000Z","USD","false","","00520000002CI2kAAG","11/22/2016T02:05:43.000Z","","true","","true","","","11/23/2016T16:33:59.000Z","Conversion_Discount__c","Quote Line","0","No NULL Conversion",""
+"a1N0J00000LrF02UAF","26","00520000002CI2kAAG","11/22/2016T02:08:51.000Z","USD","false","","00520000002CI2kAAG","11/22/2016T02:08:51.000Z","","true","","true","","","11/23/2016T16:33:59.000Z","Conversion_Discount__c","Quote Line","0","No NULL Commitment",""
+"a1N0J00000LrF07UAF","27","00520000002CI2kAAG","11/22/2016T02:11:03.000Z","USD","false","","00520000002CI2kAAG","11/22/2016T02:11:03.000Z","","true","","true","","","11/23/2016T16:33:59.000Z","Other_Discount__c","Quote Line","0","No NULL Other",""
+"a1N0J00000PB9z1UAD","53","0050J000006WjRgQAK","12/12/2016T09:15:14.000Z","USD","false","","0050J000006WjRgQAK","12/12/2016T09:15:14.000Z","","false","","true","","","12/13/2016T02:33:36.000Z","SBQQ__SpecialPriceType__c","Quote Line","Custom","Calculate Total Unit Price",""
+"a1N0J00000PCqNzUAL","156","0050J000006WjRgQAK","02/23/2017T10:54:19.000Z","USD","false","","0050J000006WjRgQAK","02/23/2017T10:54:19.000Z","","true","","true","SBQQ__DefaultSubscriptionTerm__c","","02/24/2017T02:32:49.000Z","SBQQ__SubscriptionTerm__c","Quote Line","","Set Project Review Non-MDQ Subscriptions to 12 Months",""
+"a1N2000000NKtovEAD","16","00520000002CI2kAAG","10/26/2016T18:37:37.000Z","USD","false","","00520000002CI2kAAG","10/26/2016T18:37:37.000Z","","true","","true","","","10/27/2016T16:52:45.000Z","Other_Discount__c","Quote Line","0","No Discount on Support",""
+"a1N0J00000PCr1xUAD","157","0050J000006WjRgQAK","02/23/2017T12:46:00.000Z","USD","false","SBQQ__Quote__r.SBQQ__SubscriptionTerm__c","0050J000006WjRgQAK","02/23/2017T12:46:00.000Z","","true","","true","","","02/24/2017T02:32:49.000Z","SBQQ__DefaultSubscriptionTerm__c","Quote Line","","Trick Project Reviews to Follow Contract Term",""
+"a1N0J00000PCr22UAD","158","0050J000006WjRgQAK","02/23/2017T12:46:06.000Z","USD","false","SBQQ__Quote__r.SBQQ__SubscriptionTerm__c","0050J000006WjRgQAK","02/23/2017T12:46:06.000Z","","true","","true","","","02/24/2017T02:32:49.000Z","SBQQ__SubscriptionTerm__c","Quote Line","","Trick Project Reviews to Follow Contract Term",""
+"a1N2000000NKtoWEAT","13","00520000002CI2kAAG","10/26/2016T18:16:00.000Z","USD","false","","00520000002CI2kAAG","10/26/2016T18:16:00.000Z","","true","","true","","","11/15/2016T02:33:27.000Z","Uplift_Percent__c","Quote Line","0","No Uplift on Seats",""
+"a1N2000000NKtolEAD","14","00520000002CI2kAAG","10/26/2016T18:35:15.000Z","USD","false","","00520000002CI2kAAG","10/26/2016T18:35:15.000Z","","true","","true","","","11/15/2016T02:33:27.000Z","Conversion_Discount__c","Quote Line","0","No Discount on Support",""
+"a1N0J00000LrCKOUA3","21","0050J000006WjRgQAK","11/18/2016T10:19:45.000Z","USD","false","","0050J000006WjRgQAK","11/18/2016T10:19:45.000Z","","true","","true","","","11/19/2016T02:34:11.000Z","Contract_Required__c","Quote","Yes","Set Contract Required to 'Yes'",""
+"a1N0J00000PB9zGUAT","55","0050J000006WjRgQAK","12/12/2016T09:15:43.000Z","USD","false","","0050J000006WjRgQAK","12/12/2016T09:15:43.000Z","","false","","true","Final_Unit_Price__c","","12/13/2016T02:33:36.000Z","SBQQ__NetPrice__c","Quote Line","","Calculate Total Unit Price",""
+"a1N0J00000PAsvqUAD","33","00520000002CI2kAAG","11/24/2016T04:34:07.000Z","USD","false","","00520000002CI2kAAG","11/24/2016T04:34:07.000Z","","true","","true","","","11/25/2016T02:34:25.000Z","SBQQ__Quantity__c","Quote Line","0","Included Reviews - Studio Starter",""
+"a1N0J00000PAsvvUAD","34","00520000002CI2kAAG","11/24/2016T04:39:11.000Z","USD","false","","00520000002CI2kAAG","11/24/2016T04:39:11.000Z","","true","","true","","","11/25/2016T02:34:25.000Z","SBQQ__Quantity__c","Quote Line","1","Included Reviews - Enterprise Starter",""
+"a1N0J00000PAsvfUAD","32","00520000002CI2kAAG","11/24/2016T04:20:17.000Z","USD","false","","00520000002CI2kAAG","11/24/2016T04:20:17.000Z","","true","","true","","","12/08/2016T02:33:22.000Z","SBQQ__Quantity__c","Quote Line","1","Included Reviews - Enterprise Plus Studios",""
+"a1N0J00000PAsvVUAT","31","00520000002CI2kAAG","11/24/2016T04:07:42.000Z","USD","false","","00520000002CI2kAAG","11/24/2016T04:07:42.000Z","","true","","true","","","12/09/2016T02:33:31.000Z","SBQQ__Quantity__c","Quote Line","2","Included Reviews - Enterprise",""
+"a1N0J00000PB6BcUAL","38","0050J000006WjRgQAK","12/07/2016T14:41:22.000Z","USD","false","CASE(SBQQ__SegmentIndex__c, 
+1, 
+CASE( SBQQ__Quote__r.Quote_Language__c , 
+'Chinese', '1年', 
+'Korean', '1년',
+'Japanese', '1年間',
+SBQQ__SegmentLabel__c) , 
+2, 
+CASE( SBQQ__Quote__r.Quote_Language__c , 
+'Chinese', '2年', 
+'Korean', '2년',
+'Japanese', '2年間',
+SBQQ__SegmentLabel__c), 
+3, 
+CASE( SBQQ__Quote__r.Quote_Language__c , 
+'Chinese', '3年', 
+'Korean', '3년',
+'Japanese', '3年間',
+SBQQ__SegmentLabel__c), 
+SBQQ__SegmentLabel__c)","0050J000006WjRgQAK","12/07/2016T14:41:22.000Z","","true","","true","","","12/13/2016T02:33:36.000Z","SBQQ__SegmentLabel__c","Quote Line","","Update Segment Label Multilanguage",""
+"a1N2000000NKtp0EAD","17","00520000002CI2kAAG","10/26/2016T18:45:19.000Z","USD","false","","00520000002CI2kAAG","10/26/2016T18:45:19.000Z","","true","","true","","","10/26/2016T18:45:19.000Z","Conversion_Discount__c","Quote Line","0","No Discount on Source Code",""
+"a1N0J00000PAsv7UAD","28","00520000002CI2kAAG","11/24/2016T03:32:08.000Z","USD","false","","00520000002CI2kAAG","11/24/2016T04:15:02.000Z","","true","","true","","","11/25/2016T02:34:25.000Z","SBQQ__Quantity__c","Quote Line","0","Included Reviews - Studio",""
+"a1N0J00000PCnmKUAT","155","0050J000006WjRgQAK","02/22/2017T16:31:35.000Z","USD","false","","0050J000006WjRgQAK","02/22/2017T16:31:35.000Z","","true","","true","SBQQ__DefaultSubscriptionTerm__c","","02/23/2017T02:34:04.000Z","SBQQ__SubscriptionTerm__c","Quote Line","","Set Non-MDQ Subscriptions to 12 Months",""

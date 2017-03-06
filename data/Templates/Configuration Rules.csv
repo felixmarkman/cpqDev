@@ -1,0 +1,7 @@
+Record ID,Active,Ascending Nested Condition Level,Currency ISO Code,Deleted,Descending Nested Action Level,Descending Nested Condition Level,Last Modified By ID,Last Modified Date,Product Feature,Rule #,Rule Evaluation Event,Rule Type,System Modstamp,SBQQ__ProductRule__r.Product Rule Name,SBQQ__Product__r.Product Name
+"a0x0J000006TMbKQAW","true","","USD","false","","","00520000002CI2kAAG","11/08/2016T00:05:12.000Z","","CR-000007","Always","Selection","12/08/2016T02:33:22.000Z","Enterprise","Pro (Bundle)"
+"a0x0J000006TMbeQAG","true","","USD","false","","","00520000002CI2kAAG","11/08/2016T00:30:11.000Z","","CR-000008","Always","Selection","12/08/2016T02:33:22.000Z","Enterprise Plus Studios","Pro (Bundle)"
+"a0x0J000006TLbuQAG","true","","USD","false","","","00520000002CI2kAAG","11/07/2016T00:25:43.000Z","","CR-000003","Always","Selection","12/08/2016T02:33:22.000Z","Studio Starter","Pro (Bundle)"
+"a0x0J000006TMXwQAO","true","","USD","false","","","00520000002CI2kAAG","11/07/2016T20:49:41.000Z","","CR-000004","Always","Selection","12/08/2016T02:33:22.000Z","Support Level = None","Pro (Bundle)"
+"a0x0J000006TMaRQAW","true","","USD","false","","","00520000002CI2kAAG","11/07/2016T22:37:13.000Z","","CR-000005","Always","Selection","11/08/2016T02:33:27.000Z","Studio","Pro (Bundle)"
+"a0x0J000006TMbFQAW","true","","USD","false","","","00520000002CI2kAAG","11/07/2016T23:51:57.000Z","","CR-000006","Always","Selection","11/08/2016T02:33:27.000Z","Enterprise Starter","Pro (Bundle)"
